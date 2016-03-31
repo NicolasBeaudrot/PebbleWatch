@@ -22,6 +22,24 @@ var mainMenu = new UI.Menu({
 });
 mainMenu.show();
 
+var signalAccident = function() {
+  console.log("Signaler un accident");
+};
+
+var signalTheft = function() {
+  console.log("Signaler un vol");
+};
+
+var showNotifications = function() {
+  console.log("Notifications");
+  
+  var title = 'New notifications';
+  var body = 'Attention vol en cours !';
+  
+  // Show the notification
+  Pebble.showSimpleNotificationOnPebble(title, body);
+};
+
 mainMenu.on('select', function(e) {
   switch(e.itemIndex) {
     case 0:
@@ -34,21 +52,7 @@ mainMenu.on('select', function(e) {
       showNotifications();
       break;
   }
-  console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-  console.log('The item is titled "' + e.item.title + '"');
 });
-
-var signalAccident = function() {
-  console.log("Signaler un accident");
-}
-
-var signalTheft = function() {
-  console.log("Signaler un vol");
-}
-
-var showNotifications = function() {
-  console.log("Notifications");
-}
 
 // Make request to API
 /*ajax(
